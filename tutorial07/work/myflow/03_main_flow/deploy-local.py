@@ -10,7 +10,7 @@ if __name__ == "__main__":
         source=source,
         entrypoint=entrypoint,
     ).deploy(
-        name="weather_deployment",
+        name="main_flow_deployment",
         parameters={},
         work_pool_name="default-agent-pool",
         cron="*/15 * * * *",  # Run every 5 munites
