@@ -2,43 +2,39 @@ import requests
 import pandas as pd
 from datetime import datetime
 import pytz
-from prefect import flow, task  # Prefect flow and task decorators
-import fsspec
+from prefect import flow, task # Prefect flow and task decorators
 
-# API endpoint and parameters
-WEATHER_ENDPOINT = "https://api.openweathermap.org/data/2.5/weather"
-API_KEY = "70e208d9d8ba1534136297fb1f3fe396"  # Replace with your actual API key
-
-# Define location (using only Satitram Alumni's coordinates)
-locations = {
-    "Satitram Alumni": {"lat": 13.754174, "lon": 100.615676},
-}
-
-# Fetch weather data for the specified location
 @task
-def get_weather_data(location_name='Satitram Alumni'):
-    lat = locations[location_name]['lat']
-    lon = locations[location_name]['lon']
-
+def get_weather_data(province_context={'province':None, 'lat':None, 'lon':None}):
+    # API endpoint and parameters
+    WEATHER_ENDPOINT = "https://api.openweathermap.org/data/2.5/weather"
+    API_KEY = "70e208d9d8ba1534136297fb1f3fe396"  # Replace with your actual API key
+    province=province_context['province']
+    
     params = {
-        "lat": lat,
-        "lon": lon,
+        "lat": province_context['lat'],
+        "lon": province_context['lon'],
         "appid": API_KEY,
         "units": "metric",
-        "lang": "th"  # Thai language for weather description
+        "lang": "th"
     }
-
     try:
         # Make API request
         response = requests.get(WEATHER_ENDPOINT, params=params)
         response.raise_for_status()  # Raise an exception for bad status codes
         data = response.json()
+        
+        # Convert timestamp to datetime
+        # created_at = datetime.fromtimestamp(data['dt'])
 
-        # Convert timestamp to Bangkok time
+        dt = datetime.now()
         thai_tz = pytz.timezone('Asia/Bangkok')
-        timestamp = datetime.now(thai_tz)
-        created_at = datetime.fromtimestamp(data['dt'], tz=thai_tz)
+        created_at = dt.replace(tzinfo=thai_tz)
 
+
+        timestamp = datetime.now()
+        location_name = province
+        
         # Create dictionary with required fields
         weather_dict = {
             'timestamp': timestamp,
@@ -58,9 +54,14 @@ def get_weather_data(location_name='Satitram Alumni'):
             'weather_main': data['weather'][0]['main'],
             'weather_description': data['weather'][0]['description']
         }
-
+        
+        # Create DataFrame
+        # df = pd.DataFrame([weather_dict])
+        
+        # return df
         return weather_dict
 
+    
     except requests.exceptions.RequestException as e:
         print(f"Error fetching data: {e}")
         return None
@@ -69,33 +70,114 @@ def get_weather_data(location_name='Satitram Alumni'):
         return None
 
 
-# Main flow to orchestrate the weather data collection and storage
 @flow(name="main-flow", log_prints=True)
-def main_flow():
-    # Use only 'Satitram Alumni' location
-    location_name = "Satitram Alumni"
-
-    # Get weather data for 'Satitram Alumni' and create a DataFrame
-    weather_data = get_weather_data(location_name)
-
-    # Convert the dictionary to a DataFrame
-    df = pd.DataFrame([weather_data])
-
+def main_flow(parameters={}):
+    provinces = {
+    "Satitram Alumni": {
+        "lat": 13.752916,
+        "lon": 100.618616
+    },
+    "Siam Paragon": {
+        "lat": 13.746239,
+        "lon": 100.534345
+    },
+    "MBK Center": {
+        "lat": 13.746141,
+        "lon": 100.530547
+    },
+    "Chulalongkorn University": {
+        "lat": 13.746724,
+        "lon": 100.530898
+    },
+    "Erawan Shrine": {
+        "lat": 13.746656,
+        "lon": 100.541333
+    },
+    "CentralWorld": {
+        "lat": 13.746774,
+        "lon": 100.539462
+    },
+    "Pratunam Market": {
+        "lat": 13.749609,
+        "lon": 100.539115
+    },
+    "Jim Thompson House": {
+        "lat": 13.746603,
+        "lon": 100.529531
+    },
+    "Bangkok Art and Culture Centre": {
+        "lat": 13.746599,
+        "lon": 100.531101
+    },
+    "Lumphini Park": {
+        "lat": 13.727924,
+        "lon": 100.542287
+    },
+    "Wat Arun": {
+        "lat": 13.743682,
+        "lon": 100.488146
+    },
+    "Wat Pho": {
+        "lat": 13.746697,
+        "lon": 100.493469
+    },
+    "Grand Palace": {
+        "lat": 13.750046,
+        "lon": 100.491346
+    },
+    "Asiatique The Riverfront": {
+        "lat": 13.703379,
+        "lon": 100.509145
+    },
+    "ICONSIAM": {
+        "lat": 13.723621,
+        "lon": 100.517333
+    },
+    "Khao San Road": {
+        "lat": 13.749136,
+        "lon": 100.495136
+    },
+    "Terminal 21": {
+        "lat": 13.736657,
+        "lon": 100.561172
+    },
+    "The Mall Bangkapi": {
+        "lat": 13.767090,
+        "lon": 100.640134
+    },
+    "Dusit Zoo": {
+        "lat": 13.766410,
+        "lon": 100.525019
+    },
+    "Sukhumvit Road": {
+        "lat": 13.731731,
+        "lon": 100.571259
+    }
+}
+    
+    df=pd.DataFrame([get_weather_data(
+        {
+            'province':province,
+            'lat':provinces[province]['lat'],
+            'lon':provinces[province]['lon'],
+        }
+    ) for province in list(provinces.keys())])
+    
     # lakeFS credentials from your docker-compose.yml
     ACCESS_KEY = "access_key"
     SECRET_KEY = "secret_key"
-
+    
     # lakeFS endpoint (running locally)
     lakefs_endpoint = "http://lakefs-dev:8000/"
-
+    
     # lakeFS repository, branch, and file path
     repo = "weather"
     branch = "main"
     path = "weather.parquet"
-
+    
     # Construct the full lakeFS S3-compatible path
     lakefs_s3_path = f"s3a://{repo}/{branch}/{path}"
-
+    
     # Configure storage_options for lakeFS (S3-compatible)
     storage_options = {
         "key": ACCESS_KEY,
@@ -104,14 +186,8 @@ def main_flow():
             "endpoint_url": lakefs_endpoint
         }
     }
-
-    # Save DataFrame as Parquet file to lakeFS using fsspec
-    fs = fsspec.filesystem("s3", **storage_options)
-
     df.to_parquet(
         lakefs_s3_path,
         storage_options=storage_options,
-        partition_cols=['year', 'month', 'day', 'hour'],
-        engine='pyarrow',  # Ensure you're using 'pyarrow' for parquet engine
-        filesystem=fs
+        partition_cols=['year','month','day','hour'],
     )
