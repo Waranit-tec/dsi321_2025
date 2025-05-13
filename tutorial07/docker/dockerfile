@@ -19,7 +19,7 @@ RUN pip install --no-cache-dir streamlit pandas numpy plotly lakefs-client==0.91
 ENV PYTHONUNBUFFERED=1
 
 # Expose the port Streamlit will run on
-EXPOSE 8505
+EXPOSE 8503
 
 # Command to run when the container starts
-CMD ["streamlit", "run", "app.py", "--server.port=8505", "--server.enableCORS=false"]
+CMD ["streamlit", "run", "app.py", "--server.port=8503", "--server.enableCORS=false"]

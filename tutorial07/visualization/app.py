@@ -108,7 +108,7 @@ def load_data_from_lakefs():
         }
         
         # Construct the full LakeFS S3-compatible path
-        lakefs_s3_path = f"s3a://{lakefs_repo}/{lakefs_branch}/weather.parquet/"
+        lakefs_s3_path = f"s3a://{lakefs_repo}/{lakefs_branch}/{path}"
         
         # Load data using pandas read_parquet
         df = pd.read_parquet(
@@ -370,7 +370,7 @@ def show_temperature_trends(filtered_df):
                     y=location_df[temp_col],
                     mode='lines+markers',
                     name=location,
-                    hovertemplate = '%{y:.1f}°C at %{x}<br>Location: ' + str(location) + '<extra></extra>'
+                    hovertemplate='%{y:.1f}°C at %{x}<br>Location: ' + location + '<extra></extra>'
                 ))
         else:
             # Single location or no location column
