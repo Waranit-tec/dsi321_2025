@@ -8,3 +8,4 @@ matplotlib
 fsspec==2025.3.2
 s3fs==2025.3.2
 streamlit==1.38.0
+sklearn

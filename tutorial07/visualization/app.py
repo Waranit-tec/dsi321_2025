@@ -621,7 +621,7 @@ def show_clustering(filtered_df: pd.DataFrame):
     latest_weather = np.array(filtered_df.iloc[-1][features]).reshape(1, -1)
     cluster_id = kmeans.predict(latest_weather)[0]
 
-    st.write("### สภาพอากาศล่า และคำแนะนำ")
+    st.write("### สภาพอากาศล่าสุดและคำแนะนำ")
     st.write(f"สภาพอากาศล่า อยู่ในกลุ่ม : **{desc_map[cluster_id]}**")
     st.write(f"**คำแนะนำ :** {advice_map[cluster_id]}")
 
