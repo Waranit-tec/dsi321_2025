@@ -2,10 +2,7 @@
 
 ## รายวิชา DSI321: Data Engineering and Big Data Infrastructure
 
-**ชื่อโครงการ**: ระบบเก็บและวิเคราะห์ข้อมูลสภาพอากาศแบบเรียลไทม์สำหรับสมาคมศิษย์เก่าสาธิตรามคำแหงและพื้นที่ใกล้เคียง  
-**ชื่อ Repository**: `dsi321`  
-**ผู้พัฒนา**: [ชื่อของคุณ]  
-**ระยะเวลาโครงการ**: [ใส่วันที่เริ่มต้น] - [ใส่วันที่สิ้นสุด]
+**รายงาน**: ระบบเก็บและวิเคราะห์ข้อมูลสภาพอากาศแบบเรียลไทม์สำหรับสมาคมศิษย์เก่าสาธิตรามคำแหงและพื้นที่ใกล้เคียง  
 
 ---
 
@@ -25,7 +22,7 @@
 
 ```mermaid
 graph LR
-    A[OpenWeatherMap API] --> B[Prefect Flow]
-    B --> C[LakeFS (Parquet)]
-    C --> D[Streamlit Dashboard]
-    C --> E[ML Model Training]
+  A[OpenWeatherMap API] --> B[Prefect Flow]
+  B --> C[LakeFS (Parquet)]
+  C --> D[Streamlit Dashboard]
+  C --> E[ML Model Training]
