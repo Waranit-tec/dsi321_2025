@@ -27,13 +27,12 @@
 
 ## สถาปัตยกรรมระบบ
 
-<pre><code>```mermaid
+```mermaid
 graph LR
   A[OpenWeatherMap API] --> B[Prefect Flow]
-  B --> C["LakeFS Parquet"]
+  B --> C["LakeFS (Parquet)"]
   C --> D[Streamlit Dashboard]
-  C --> E[ML Model Training]
-```</code></pre>
+  C --> E[K-means Clustering]
 
 
 ## 🗺️ ระบบทำงานอย่างไร?
