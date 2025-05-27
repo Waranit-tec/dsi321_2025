@@ -86,7 +86,7 @@
 #### ตัวอย่างภาพประกอบ
 
 ![Prefect Flow UI](tutorial07/image/Prefect.png)
-![LakeFS Version Control](tutorial07/image/lakefs.png)
+![LakeFS Version Control](tutorial07/image/lakefs repo.png)
 
 #### คำอธิบาย
 - ภาพ Prefect Flow UI แสดง Workflow ที่จัดการการดึงข้อมูลและการประมวลผลข้อมูลทุก 15 นาที
