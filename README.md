@@ -150,7 +150,7 @@ git clone https://github.com/Waranit-tec/dsi321_2025.git
 3.	เข้าไปในโฟลเดอร์โปรเจกต์:
 
 ```bash
-cd dsi321_2025
+cd dsi321_2025/tutorial07
 ```
 4.	รันระบบด้วย Docker Compose:
 
@@ -177,13 +177,13 @@ streamlit run app.py
 
 ### ผลลัพธ์
 
-### 🧬 ระบบจัดเก็บแบบ version control ด้วย LakeFS
+#### 🧬 ระบบจัดเก็บแบบ version control ด้วย LakeFS
 ![lakefs_versions](images/lakefs_versions.png)
 
-### 📊 Dashboard ที่พัฒนาโดย Streamlit
+#### 📊 Dashboard ที่พัฒนาโดย Streamlit
 ![streamlit_dashboard](images/streamlit_dashboard.png)
 
-### 🧠 การจำแนกกลุ่มสภาพอากาศด้วย K-means
+#### 🧠 การจำแนกกลุ่มสภาพอากาศด้วย K-means
 ![kmeans_clustering](images/kmeans_result.png)
 
 ---
