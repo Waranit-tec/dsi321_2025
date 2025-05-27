@@ -144,22 +144,27 @@
 
 ```bash
 git clone https://github.com/Waranit-tec/dsi321_2025.git
+```
 3.	เข้าไปในโฟลเดอร์โปรเจกต์:
 
 ```bash
 cd dsi321_2025
+```
 4.	รันระบบด้วย Docker Compose:
 
 ```bash
 docker-compose up
+```
 5.	ติดตั้ง dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
 6.	รันแอปพลิเคชัน Streamlit:
 
 ```bash
 streamlit run app.py
+```
 
 ---
 
