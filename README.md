@@ -178,13 +178,18 @@ streamlit run app.py
 ### ผลลัพธ์
 
 #### 🧬 ระบบจัดเก็บแบบ version control ด้วย LakeFS
-![lakefs_versions](images/lakefs_versions.png)
+![lakefs](tutorial07/image/lakefs.png)
+
+#### 📁 Raw data ทั้งหมด ที่ดึงข้อมูลจาก LakeFS แสดงผลบน Streamlit
+![Raw_data](tutorial07/image/raw-data.png)
 
 #### 📊 Dashboard ที่พัฒนาโดย Streamlit
-![streamlit_dashboard](images/streamlit_dashboard.png)
+![streamlit_dashboard](tutorial07/image/Graph1.png)
+![streamlit_dashboard](tutorial07/image/Graph2.png)
+
 
 #### 🧠 การจำแนกกลุ่มสภาพอากาศด้วย K-means
-![kmeans_clustering](images/kmeans_result.png)
+![kmeans_clustering](tutorial07/image/K-mean.png)
 
 ---
 
