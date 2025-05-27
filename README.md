@@ -106,7 +106,7 @@
 
 #### ตัวอย่างภาพประกอบ
 
-![Streamlit Dashboard](./images/Graph1.png)
+![Streamlit Dashboard](tutorial07/image/Graph1.png)
 
 #### คำอธิบาย
 แดชบอร์ด Streamlit แสดงข้อมูลสภาพอากาศล่าสุดพร้อมกราฟแนวโน้มย้อนหลัง และฟิลเตอร์สำหรับเลือกดูข้อมูลตามพื้นที่และช่วงเวลา
