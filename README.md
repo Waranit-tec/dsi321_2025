@@ -86,7 +86,7 @@
 #### ตัวอย่างภาพประกอบ
 
 ![Prefect Flow UI](tutorial07/image/Prefect.png)
-![LakeFS Version Control](tutorial07/image/lakefs repo.png)
+![LakeFS Version Control](tutorial07/image/lakefs-repo.png)
 
 #### คำอธิบาย
 - ภาพ Prefect Flow UI แสดง Workflow ที่จัดการการดึงข้อมูลและการประมวลผลข้อมูลทุก 15 นาที
@@ -106,7 +106,7 @@
 
 #### ตัวอย่างภาพประกอบ
 
-![Streamlit Dashboard](./images/streamlit_dashboard.png)
+![Streamlit Dashboard](./images/Graph1.png)
 
 #### คำอธิบาย
 แดชบอร์ด Streamlit แสดงข้อมูลสภาพอากาศล่าสุดพร้อมกราฟแนวโน้มย้อนหลัง และฟิลเตอร์สำหรับเลือกดูข้อมูลตามพื้นที่และช่วงเวลา
