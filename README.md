@@ -133,7 +133,7 @@
 - **Jupyter Notebook**: สำหรับการวิเคราะห์ข้อมูลเบื้องต้น และทดสอบโมเดล
 - **Shell Script**: สำหรับสั่งรัน Prefect Flow และ Automate Task ต่าง ๆ
 - **K-means Clustering**: สำหรับจำแนกกลุ่มสภาพอากาศ (Clustering)
-- **Matplotlib / Seaborn**: สำหรับการสร้างกราฟเชิงวิเคราะห์
+- **Matplotlib / Plotly**: สำหรับการสร้างกราฟเชิงวิเคราะห์
 
 ---
 
