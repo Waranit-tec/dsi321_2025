@@ -65,7 +65,7 @@
 
 #### ตัวอย่างภาพประกอบ
 
-![Infrastructure Diagram](./images/infrastructure_diagram.png)
+![Docker Containers](tutorial07/image/Docker.png)
 
 #### คำอธิบาย
 ภาพ Infrastructure Diagram แสดงโครงสร้างระบบที่ประกอบด้วย Prefect สำหรับจัดการ Workflow, Docker สำหรับ Containerized Environment, LakeFS สำหรับ Versioned Data Storage, และ Streamlit Dashboard สำหรับแสดงผลข้อมูล
@@ -85,8 +85,8 @@
 
 #### ตัวอย่างภาพประกอบ
 
-![Prefect Flow UI](./images/prefect_flow_ui.png)
-![LakeFS Version Control](./images/lakefs_version_control.png)
+![Prefect Flow UI](tutorial07/image/Prefect.png)
+![LakeFS Version Control](tutorial07/image/lakefs.png)
 
 #### คำอธิบาย
 - ภาพ Prefect Flow UI แสดง Workflow ที่จัดการการดึงข้อมูลและการประมวลผลข้อมูลทุก 15 นาที
